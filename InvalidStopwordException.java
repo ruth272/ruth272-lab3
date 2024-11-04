@@ -1,7 +1,7 @@
 public class InvalidStopwordException extends Exception {
     
-    public InvalidStopwordException() {
-        super("Stopword is not found in file.");
+    public InvalidStopwordException(String stopword) {
+        super("Couldn't find stopeword: " + stopword + ".");
     }
 
 }
