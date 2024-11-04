@@ -1,4 +1,53 @@
-public static void main(String[] var0) {
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class WordCounter {
+   public WordCounter() {
+   }
+
+   public static int processText(StringBuffer var0, String var1) throws InvalidStopwordException, TooSmallText {
+      int var2 = 0;
+      boolean var3 = false;
+      Pattern var4 = Pattern.compile("[a-zA-Z0-9']+");
+      Matcher var5 = var4.matcher(var0);
+
+      while(var5.find()) {
+         ++var2;
+         System.out.println("Word found: " + var5.group());
+         if (var1 != null && var5.group().equalsIgnoreCase(var1)) {
+            var3 = true;
+            break;
+         }
+      }
+
+      if (var1 == null) {
+         return var2;
+      } else if (!var3) {
+         throw new InvalidStopwordException(var1);
+      } else if (var2 < 5) {
+         throw new TooSmallText(var2);
+      } else {
+         return var2;
+      }
+   }
+
+   public static StringBuffer processFile(String var0) throws EmptyFileException {
+      StringBuffer var1 = new StringBuffer(var0);
+      boolean var2 = false;
+
+      while(!var2) {
+      }
+
+      if (var0 == null) {
+         throw new EmptyFileException(var1);
+      } else {
+         return var1;
+      }
+   }
+
+   public static void main(String[] var0) {
       Scanner var1 = new Scanner(System.in);
       WordCounter var2 = new WordCounter();
       int var3 = 0;
@@ -74,3 +123,4 @@ public static void main(String[] var0) {
 
       var1.close();
    }
+}
