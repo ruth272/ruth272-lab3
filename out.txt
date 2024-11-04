@@ -4,7 +4,7 @@ Choose an option:
 java.lang.NullPointerException
 	at java.base/java.lang.StringBuffer.<init>(StringBuffer.java:151)
 	at WordCounter.processFile(WordCounter.java:66)
-	at WordCounter.main(WordCounter.java:126)
+	at WordCounter.main(WordCounter.java:128)
 	at Lab3_Tester.test14(Lab3_Tester.java:378)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

@@ -68,7 +68,6 @@ public class WordCounter {
         File nfile = new File(path);
 
         //if file cannot be opened, reenter file name
-    
 
         try {
         BufferedReader reader = new BufferedReader(new FileReader(nfile));
@@ -79,24 +78,24 @@ public class WordCounter {
             //reader.close();
         }
         reader.close();
-        if (buffer.length() == 0) {
-            throw new EmptyFileException(buffer);
-        }
         } 
-        catch(EmptyFileException e){
-            file = true;
-            System.out.println(e);
-        }
+        
+        //catch(EmptyFileException e){
+         //   file = true;
+         //   System.out.println(e);
+        //}
         catch (IOException e) {
             System.out.println("error");
         }
-    
+        if (buffer.length() == 0) {
+            throw new EmptyFileException(buffer);
+        }
 
         return buffer;
     }
 
     public static void main(String[] args) {
-        //asks the user to choose to process a file with option 1, or text with option 
+        //asks the user to choose to process a file with option 1, or text with option 2
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
 
@@ -132,7 +131,7 @@ public class WordCounter {
                     //StringBuffer fileContent = processFile(textOrPath);
                     wordCount = processText(fileContent, stopword);
                 } catch (InvalidStopwordException b) {
-                    System.out.println(b.toString());
+                    System.out.println(fileContent.toString());
                 } catch (TooSmallText c) {
                     System.out.println(c.toString());
                 }
