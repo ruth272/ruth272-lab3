@@ -1,0 +1,83 @@
+commit 05f23d787126352af21c024a281a3b1d351c8d8c
+Author: Ruth Teshome <ruthteshome@Ruths-MacBook-Air.local>
+Date:   Mon Nov 4 07:33:10 2024 -0500
+
+    updating
+
+commit 4c077266c3997ee5d2b1452d48f927161a806a1b
+Author: Ruth Teshome <ruthteshome@Ruths-MacBook-Air.local>
+Date:   Mon Nov 4 07:11:19 2024 -0500
+
+    updating to pass more test cases
+
+commit 03dee8e62e6f849c063a0ca85fc3c326652da12e
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Sun Nov 3 23:44:03 2024 -0500
+
+    Update WordCounter.java
+
+commit f8592d438a108b601e050a356ddac8496642a14a
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Sun Nov 3 23:41:27 2024 -0500
+
+    Update WordCounter.java
+
+commit 49db0c965b9a1f91ba78d8780ef8f4fed7d8f811
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Sun Nov 3 23:40:36 2024 -0500
+
+    Update WordCounter.java
+
+commit 12807bde471a267c710810f4df1b405b518d6daa
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Sun Nov 3 23:39:39 2024 -0500
+
+    Update WordCounter.java
+
+commit 262e87f3c125d0272c2cd1d4592d6867e645d040
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Sun Nov 3 23:35:21 2024 -0500
+
+    Update Lab3_Tester.java
+
+commit 65a3f9a0a84c5cd5020ee7a3d185073e3917d17e
+Author: Ruth Teshome <ruthteshome@Ruths-MacBook-Air.local>
+Date:   Sun Nov 3 19:49:18 2024 -0500
+
+    working on main
+
+commit 2442cff511b0fd4750429df557dc319492c8bbf2
+Author: Ruth Teshome <ruthteshome@Ruths-MacBook-Air.local>
+Date:   Tue Oct 29 18:10:38 2024 -0400
+
+    working on ProcessText and processFile functions
+
+commit e86418e9887a4ba9db34b9bfd9366fce49f5f946
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Mon Oct 21 14:27:03 2024 -0400
+
+    Create TooSmallText.java
+
+commit 051012caec99d384bea422940553c91a346956c3
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Mon Oct 21 14:26:41 2024 -0400
+
+    Create InvalidStopwordException.java
+
+commit 0a3035e584b193378645054fd2c3ba2c00c1d184
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Mon Oct 21 14:26:25 2024 -0400
+
+    Create EmptyFileException.java
+
+commit 2adec7f274ab8e5fef5028e4ae75f1beba8a551a
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Mon Oct 21 14:26:10 2024 -0400
+
+    Create WordCounter.java
+
+commit d5fbe1d01fdab2389c3f129a6860392d723fcf44
+Author: ruth272 <143119920+ruth272@users.noreply.github.com>
+Date:   Mon Oct 21 14:25:42 2024 -0400
+
+    Add files via upload
