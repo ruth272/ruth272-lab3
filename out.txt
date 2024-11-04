@@ -1,0 +1,107 @@
+Choose an option: 
+1. Process a file 
+2. Process text
+java.lang.NullPointerException
+	at java.base/java.lang.StringBuffer.<init>(StringBuffer.java:151)
+	at WordCounter.processFile(WordCounter.java:66)
+	at WordCounter.main(WordCounter.java:126)
+	at Lab3_Tester.test14(Lab3_Tester.java:378)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
+	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
+process long text with found stopword
+Word found: This
+Word found: sentence
+Word found: is
+Word found: long
+Word found: enough
+Word found: to
+Word found: yellow
+process long text with no stopword
+Word found: This
+Word found: sentence
+Word found: is
+Word found: long
+Word found: enough
+Word found: to
+Word found: yellow
+Word found: pass
+Word found: this
+Word found: test
+Word found: But
+Word found: it
+Word found: could
+Word found: be
+Word found: even
+Word found: longer
+process long text with missing stopword
+Word found: This
+Word found: sentence
+Word found: is
+Word found: long
+Word found: enough
+Word found: to
+Word found: yellow
+Word found: pass
+Word found: this
+Word found: test
+Word found: But
+Word found: it
+Word found: could
+Word found: be
+Word found: even
+Word found: longer
+process short text with found stopword
+Word found: This
+Word found: red
+process short text with missing stopword
+Word found: This
+Word found: yellow
+Word found: is
+process short text with found stopword
+Word found: This
+Word found: yellow
+process easy long text with end stopword
+Word found: This
+Word found: sentence
+Word found: is
+Word found: long
+Word found: enough
+Word found: to
+Word found: pass
+Word found: this
+Word found: test
+Word found: yellow
+process found file
+process missing file
+error

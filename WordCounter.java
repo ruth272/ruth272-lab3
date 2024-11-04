@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -18,56 +19,78 @@ public class WordCounter {
         Pattern regex = Pattern.compile("[a-zA-Z0-9']+");
         Matcher regexMatcher = regex.matcher(text);
 
-
+        //counts words until stopword is found
         while (regexMatcher.find()) {
-            wordCount++;        //increments word count
-            count++;
+            count++;        //increments word count
             System.out.println("Word found: " + regexMatcher.group());
             if (stopword != null && regexMatcher.group().equals(stopword)) {          //if the stopword is found, break and change found to true
                 found = true;  
-            }
-            if(found) {
-                count--;
+                break;
             }
         }
 
-        if (stopword == null) {         //counts all words if stopword is null
-            return count;
+        Pattern r = Pattern.compile("[a-zA-Z0-9']+");
+        Matcher rm = regex.matcher(text);
+
+        //counts all words
+        while(rm.find()) {
+            wordCount++;
+        }
+
+        if (stopword == null && wordCount > 5) {         //counts all words if stopword is null
+            return wordCount;
         }
 
         if(!found) {            //if the stopword is not found, the InvalidStopwordException is raised
-            throw new InvalidStopwordException(stopword);
+            if(wordCount < 5) {     //raises toosmallexception if less than 5
+                throw new TooSmallText(wordCount);
+            }
+            else{
+                throw new InvalidStopwordException(stopword);
+            }
             
         }
 
         if(wordCount < 5) {     //raises toosmallexception if less than 5
             throw new TooSmallText(wordCount);
         }
-        else if(count < 5) {     //raises toosmallexception if less than 5
+        if(count < 5) {     //raises toosmallexception if less than 5
             throw new TooSmallText(count);
         }
 
-        return wordCount;
+        return count;
 
     }
 
     public static StringBuffer processFile(String path) throws EmptyFileException {
         StringBuffer buffer = new StringBuffer(path);         //string changes pointer to new memory address w/ new string while stringbuffer changes the string in the original memoery address
-        boolean file = false; 
+        boolean file = true; 
         File nfile = new File(path);
 
         //if file cannot be opened, reenter file name
     
-        while (nfile.exists() == false) {
-            Scanner s = new Scanner(System.in);
-            path = s.nextLine();
-            nfile = new File(path);
-            s.close();
+
+        try {
+        BufferedReader reader = new BufferedReader(new FileReader(nfile));
+        String line;
+        file = false;
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+            //reader.close();
         }
-        
+        reader.close();
         if (buffer.length() == 0) {
             throw new EmptyFileException(buffer);
         }
+        } 
+        catch(EmptyFileException e){
+            file = true;
+            System.out.println(e);
+        }
+        catch (IOException e) {
+            System.out.println("error");
+        }
+    
 
         return buffer;
     }
@@ -75,71 +98,58 @@ public class WordCounter {
     public static void main(String[] args) {
         //asks the user to choose to process a file with option 1, or text with option 
         Scanner scanner = new Scanner(System.in);
-        WordCounter counter = new WordCounter();
-
         int choice = 0;
+
         while (choice != 1 && choice != 2) {             //asnwer again if not one of the options
             System.out.println("Choose an option: \n1. Process a file \n2. Process text");
-            try {
-                choice = Integer.parseInt(scanner.nextLine());
-                if (choice != 1 && choice != 2) {
-                    System.out.println("Invalid choice, please enter 1 or 2.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input, please enter a number.");
-            }
+            choice = Integer.parseInt(scanner.nextLine());
+            /*if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice, please enter 1 or 2.");
+            }*/
         }
 
         //geting a file path or text from the command line arguments
-        String textOrPath = args.length > 0 ? args[0] : "";
-        String stopword = args.length > 1 ? args[1] : null;
+        String textOrPath = null;     
+        if(args.length > 1){
+            textOrPath = args[0];
+        }
+        String stopword = null;
+        if(args.length > 1){
+            stopword = args[1];
+        }
+
         int wordCount = 0;
 
         
         if (choice == 1) {  //depends on users choice 
             try {
-                StringBuffer fileContent = counter.processFile(textOrPath);
-                //StringBuffer fileBuffer = new StringBuffer(fileContent);
-                wordCount = counter.processText(fileContent, stopword);
+                StringBuffer fileContent = processFile(textOrPath);
+                wordCount = processText(fileContent, stopword);
             } catch (EmptyFileException e) {
-                System.out.println(e);
+                //System.out.println(e);
+                StringBuffer fileContent = new StringBuffer();
                 try {
-                    wordCount = counter.processText(new StringBuffer(""), stopword);
+                    //StringBuffer fileContent = processFile(textOrPath);
+                    wordCount = processText(fileContent, stopword);
                 } catch (InvalidStopwordException b) {
                     System.out.println(b.toString());
-                } catch (TooSmallText tooSmallEx) {
-                    System.out.println(tooSmallEx);
+                } catch (TooSmallText c) {
+                    System.out.println(c.toString());
                 }
             } catch (InvalidStopwordException e) {
-                System.out.println(e.getMessage());
-                System.out.println("Please enter a valid stopword:");
-                stopword = scanner.nextLine();
-                try {
-                    wordCount = counter.processText(new StringBuffer(textOrPath), stopword);
-                } catch (InvalidStopwordException retryException) {
-                    System.out.println("Stopword not found after retry.");
-                } catch (TooSmallText tooSmallEx) {
-                    System.out.println(tooSmallEx);
-                }
+                System.out.println(e.toString());
             } catch (TooSmallText e) {
-                System.out.println(e);
+                System.out.println(e.toString());
             }
         } else {  
             try {
-                wordCount = counter.processText(new StringBuffer(textOrPath), stopword);
+                wordCount = processText(new StringBuffer(textOrPath), stopword);
             } catch (InvalidStopwordException e) {
                 System.out.println(e.toString());
-                System.out.println("Please enter a valid stopword:");
-                stopword = scanner.nextLine();
-                try {
-                    wordCount = counter.processText(new StringBuffer(textOrPath), stopword);
-                } catch (InvalidStopwordException retryException) {
-                    System.out.println("Stopword not found after retry.");
-                } catch (TooSmallText tooSmallEx) {
-                    System.out.println(tooSmallEx);
-                }
+                //System.out.println("Please enter a valid stopword:");
+                //stopword = scanner.nextLine();
             } catch (TooSmallText e) {
-                System.out.println(e);
+                System.out.println(e.toString());
             }
         }
 
